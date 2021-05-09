@@ -24,6 +24,11 @@ test('The stack should be empty in the beginning', async () => {
 });
 
 test('Top of stack should be hej', async () => {
+  let push = await driver.findElement(By.id('push'));
+  await push.click();
+  let alert = await driver.switchTo().alert();
+  await alert.sendKeys("hej");
+  await alert.accept();
 	let stack = await driver.findElement(By.id('top_of_stack')).getText();
 	expect(stack).toEqual("hej");
 });
